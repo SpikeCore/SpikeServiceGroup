@@ -1,0 +1,98 @@
+openapi: 3.0.2
+info:
+  title: spike-service-restful-api-for-product
+  version: 1.0.0
+  description: spike-service-restful-api-for-product
+paths:
+  /products:
+    summary: Path used to manage the list of products.
+    description: >-
+      The REST endpoint/path used to list and create zero or more `Product` entities.  This path
+      contains a `GET` and `POST` operation to perform the list and create tasks, respectively.
+    get:
+      tags:
+        - Product
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductDto'
+          description: Successful response - returns an array of `Product` entities.
+      operationId: getproducts
+      summary: 获取所有产品
+      description: Gets a list of all `Product` entities.
+    post:
+      requestBody:
+        description: A new `Product` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductDto'
+        required: true
+      tags:
+        - Product
+      responses:
+        '201':
+          description: Successful response.
+      operationId: createProduct
+      summary: 创建产品
+      description: Creates a new instance of a `Product`.
+  '/products/{productId}':
+    summary: Path used to manage a single Product.
+    description: >-
+      The REST endpoint/path used to get, update, and delete single instances of an `Product`.  This
+      path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete
+      tasks, respectively.
+    get:
+      tags:
+        - Product
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+          description: Successful response - returns a single `Product`.
+      operationId: getProduct
+      summary: 获取一个产品
+      description: Gets the details of a single instance of a `Product`.
+    put:
+      requestBody:
+        description: Updated `Product` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductDto'
+        required: true
+      tags:
+        - Product
+      responses:
+        '202':
+          description: Successful response.
+      operationId: updateProduct
+      summary: 更新Product
+      description: Updates an existing `Product`.
+    delete:
+      tags:
+        - Product
+      responses:
+        '204':
+          description: Successful response.
+      operationId: deleteProduct
+      summary: 删除Product
+      description: Deletes an existing `Product`.
+    parameters:
+      - name: productId
+        description: A unique identifier for a `Product`.
+        schema:
+          type: string
+        in: path
+        required: true
+components:
+  schemas:
+    ProductDto:
+      description: 产品
+      type: object
