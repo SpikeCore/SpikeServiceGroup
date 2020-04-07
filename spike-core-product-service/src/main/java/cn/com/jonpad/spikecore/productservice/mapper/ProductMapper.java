@@ -1,10 +1,12 @@
 package cn.com.jonpad.spikecore.productservice.mapper;
 
-import cn.com.jonpad.spikecore.productservice.dto.ProductDto;
+import cn.com.jonpad.spikecore.core.dto.ProductDto;
 import cn.com.jonpad.spikecore.productservice.entities.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 /**
  * @author Jon Chan
@@ -19,4 +21,6 @@ public interface ProductMapper {
 
   @Mappings({})
   ProductDto toDto(Product product);
+
+  List<ProductDto> toDto(List<Product> products);
 }

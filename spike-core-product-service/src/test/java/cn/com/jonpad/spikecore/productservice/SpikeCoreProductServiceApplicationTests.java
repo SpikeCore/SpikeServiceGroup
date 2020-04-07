@@ -1,8 +1,7 @@
 package cn.com.jonpad.spikecore.productservice;
 
+import cn.com.jonpad.spikecore.core.dto.ProductDto;
 import cn.com.jonpad.spikecore.productservice.businessService.ProductBusiness;
-import cn.com.jonpad.spikecore.productservice.dto.ProductDto;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +20,16 @@ class SpikeCoreProductServiceApplicationTests {
 
   @Test
   void testCacheable() {
-    ProductDto one = business.getOne(1L);
+    String uuid00001 = "00001";
+    ProductDto one = business.getOne(uuid00001);
     log.info("1 - {}", one);
-    one = business.getOne(1L);
+    one = business.getOne(uuid00001);
     log.info("2 - {}", one);
-    one = business.getOne(1L);
+    one = business.getOne(uuid00001);
     log.info("3 - {}", one);
-    one = business.getOne(1L);
+    one = business.getOne(uuid00001);
     log.info("4 - {}", one);
-    one = business.getOne(1L);
+    one = business.getOne(uuid00001);
     log.info("5 - {}", one);
   }
 

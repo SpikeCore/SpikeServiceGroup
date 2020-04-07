@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
  * @author Jon Chan
  * @date 2020/4/1 23:34
  */
+@Deprecated
 @NoArgsConstructor
 public class ProductDto extends Product {
 }

@@ -23,6 +23,10 @@
       <groupId>cn.com.jonpad</groupId>
       <artifactId>data-transport-model</artifactId>
     </dependency>
+    <dependency>
+      <groupId>cn.com.jonpad</groupId>
+      <artifactId>restful-api-for-product</artifactId>
+    </dependency>
 
 
     <dependency>
@@ -95,6 +99,12 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
+    </dependency>
+
+    <!--监控-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
   </dependencies>

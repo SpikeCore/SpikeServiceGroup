@@ -1,6 +1,6 @@
 package cn.com.jonpad.spikecore.productservice.businessService;
 
-import cn.com.jonpad.spikecore.productservice.dto.ProductDto;
+import cn.com.jonpad.spikecore.core.dto.ProductDto;
 import cn.com.jonpad.spikecore.productservice.entities.Product;
 import cn.com.jonpad.spikecore.productservice.exception.ResourceNotFoundException;
 import cn.com.jonpad.spikecore.productservice.mapper.ProductMapper;
@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author Jon Chan
@@ -46,13 +48,18 @@ public class ProductBusiness {
    *               unless = "#result == null"
    *               unless = "#a0==2":如果第一个参数的值是2，结果不缓存；
    *       sync：是否使用异步模式 @Cacheable(sync=true) does not support unless attribute
-   * @param id
+   * @param id uuid
    * @return
    */
   @Cacheable(cacheNames = {"cache1"}, key = "#id"/*keyGenerator = "cacheConfigKeyGenerator"*//*,condition = "#a0>0"*//*,unless = "#a0==2"*/,sync = true)
   @Transactional
-  public ProductDto getOne(Long id) {
+  public ProductDto getOne(String id) {
     Product product = service.getById(id).orElseThrow(ResourceNotFoundException::new);
     return ProductMapper.INSTANCE.toDto(product);
+  }
+
+  public List<ProductDto> getProducts() {
+    List<Product> products = service.getAll();
+    return ProductMapper.INSTANCE.toDto(products);
   }
 }

@@ -85,7 +85,8 @@ paths:
       summary: 删除Product
       description: Deletes an existing `Product`.
     parameters:
-      - name: productId
+      -
+        name: productId
         description: A unique identifier for a `Product`.
         schema:
           type: string
@@ -96,3 +97,20 @@ components:
     ProductDto:
       description: 产品
       type: object
+      properties:
+        id:
+          format: int64
+          description: id
+          type: integer
+        uuid:
+          description: uuid
+          type: string
+        title:
+          description: title
+          type: string
+        price:
+          description: price
+          type: number
+        amount:
+          description: amount
+          type: number

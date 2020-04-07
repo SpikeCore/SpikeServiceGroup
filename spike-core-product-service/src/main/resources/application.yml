@@ -43,3 +43,16 @@ spring:
     cache-names: cache1，cache2
     redis:
       use-key-prefix: true
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    servlet:
+      context-path: /actuator

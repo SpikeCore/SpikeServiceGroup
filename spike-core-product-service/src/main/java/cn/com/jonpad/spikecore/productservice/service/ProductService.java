@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,7 +23,12 @@ public class ProductService {
     repository.save(product);
   }
 
-  public Optional<Product> getById(Long id) {
-    return repository.findById(id);
+  public Optional<Product> getById(String uuid) {
+    return repository.findByUuid(uuid);
+  }
+
+  public List<Product> getAll() {
+
+    return  repository.findAll();
   }
 }
