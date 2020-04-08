@@ -7,6 +7,8 @@
     <module>spike-core-product-service</module>
     <module>data-transport-model</module>
     <module>restful-api-for-product</module>
+    <module>spike-core-order-producer-service</module>
+    <module>restful-api-for-order-producer</module>
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -43,6 +45,11 @@
       <dependency>
         <groupId>cn.com.jonpad</groupId>
         <artifactId>restful-api-for-product</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.com.jonpad</groupId>
+        <artifactId>restful-api-for-order-producer</artifactId>
         <version>${version}</version>
       </dependency>
 

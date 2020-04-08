@@ -1,0 +1,27 @@
+openapi: 3.0.2
+info:
+  title: spike-service-restful-api-for-order-producer
+  version: 1.0.0
+  description: spike-service-restful-api-for-order-producer 订单生产者
+paths:
+  /order:
+    post:
+      tags:
+        - Order
+      responses:
+        '201':
+          description: 入队成功
+      operationId: createOrder
+      summary: 下单
+components:
+  schemas:
+    OrderDto:
+      description: ''
+      type: object
+      properties:
+        uuid:
+          description: ''
+          type: string
+        orderNum:
+          description: ''
+          type: string
