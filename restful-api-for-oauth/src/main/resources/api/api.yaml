@@ -1,0 +1,45 @@
+openapi: 3.0.2
+info:
+  title: restful-api-for-oauth
+  version: 1.0.0
+  description: 授权
+paths:
+  '/users/{userId}':
+    summary: Path used to manage a single User.
+    description: >-
+      The REST endpoint/path used to get, update, and delete single instances of an `User`.  This path
+      contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
+      respectively.
+    get:
+      tags:
+        - User
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+          description: Successful response - returns a single `User`.
+      operationId: getUser
+      summary: 注册 & 获取用户
+      description: Gets the details of a single instance of a `User`.
+    parameters:
+      -
+        name: userId
+        description: A unique identifier for a `User`.
+        schema:
+          type: string
+        in: path
+        required: true
+components:
+  schemas:
+    UserDto:
+      description: ''
+      type: object
+      properties:
+        uuid:
+          description: uuid
+          type: string
+        phone:
+          description: phone
+          type: string
