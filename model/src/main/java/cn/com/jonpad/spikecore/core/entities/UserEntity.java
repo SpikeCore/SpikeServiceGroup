@@ -32,6 +32,7 @@ public class UserEntity implements Serializable {
   private String uuid;
 
   @Column(unique = true, length = 36)
+  @NonNull
   private String phone;
 
 }

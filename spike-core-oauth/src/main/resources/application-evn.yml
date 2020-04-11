@@ -19,3 +19,9 @@ spring:
     ##连接端口号 默认是6379 可修改
     port: 16379
     # password: ##redis客户端密码
+dubbo:
+  protocol:
+    port: 20880
+  registry:
+    # 监控中心地址
+    address: jomdembp:2181

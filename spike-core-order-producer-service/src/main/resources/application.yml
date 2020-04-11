@@ -43,6 +43,8 @@ spring:
     cache-names: cache1，cache2
     redis:
       use-key-prefix: true
+server:
+  port: 7002
 management:
   endpoint:
     health:
@@ -56,3 +58,15 @@ management:
   server:
     servlet:
       context-path: /actuator
+
+
+dubbo:
+  application:
+    name: spike-core-order-producer-service
+  registry:
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20881
+  monitor:
+    protocol: registry

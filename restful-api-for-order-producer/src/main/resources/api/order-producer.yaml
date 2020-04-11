@@ -6,6 +6,12 @@ info:
 paths:
   /order:
     post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderDto'
+        required: true
       tags:
         - Order
       responses:
@@ -24,4 +30,7 @@ components:
           type: string
         orderNum:
           description: ''
+          type: string
+        userUuid:
+          description: 下单用户UUID
           type: string

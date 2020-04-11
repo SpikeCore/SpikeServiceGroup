@@ -20,6 +20,6 @@ public class UserController implements UserApi {
 
   @Override
   public ResponseEntity<UserDto> getUser(@PathVariable("userId") String uuid) {
-    return ResponseEntity.ok(business.getByUuid(uuid));
+    return ResponseEntity.ok(business.getByPhone(uuid));
   }
 }

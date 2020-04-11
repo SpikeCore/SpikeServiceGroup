@@ -30,6 +30,10 @@
       <groupId>cn.com.jonpad</groupId>
       <artifactId>restful-api-for-order-producer</artifactId>
     </dependency>
+    <dependency>
+      <groupId>cn.com.jonpad</groupId>
+      <artifactId>restful-api-for-oauth</artifactId>
+    </dependency>
 
 
     <dependency>
@@ -67,6 +71,31 @@
         </exclusion>
       </exclusions>
     </dependency>
+
+
+    <!--监控-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+
+
+    <!-- Dubbo Spring Boot Starter -->
+    <dependency>
+      <groupId>com.alibaba.boot</groupId>
+      <artifactId>dubbo-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>dubbo</artifactId>
+    </dependency>
+    <!-- Dubbo dependencies -->
+    <dependency>
+      <groupId>org.apache.curator</groupId>
+      <artifactId>curator-framework</artifactId>
+    </dependency>
+
   </dependencies>
 
   <build>

@@ -18,7 +18,10 @@ public class UserService {
 
   public Optional<UserEntity> getByUuid(String uuid) {
     return repository.findByUuid(uuid);
-  }public Optional<UserEntity> getByPhone(String phone) {
+  }
+
+
+  public Optional<UserEntity> getByPhone(String phone) {
     return repository.findByPhone(phone);
   }
 

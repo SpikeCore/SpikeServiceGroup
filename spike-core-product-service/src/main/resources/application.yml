@@ -56,3 +56,5 @@ management:
   server:
     servlet:
       context-path: /actuator
+server:
+  port: 7001

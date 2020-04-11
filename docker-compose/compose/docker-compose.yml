@@ -1,24 +1,17 @@
 version: '3'
 services:
-  consul:
-    image: "consul:1.5.1"
-    container_name: spike-dev-consul
-    ports:
-      - 8300:8300
-      - 8301:8301
-      - 8301:8301/udp
-      - 8302:8302
-      - 8302:8302/udp
-      - 8400:8400
-      - 8500:8500
-      - 53:53/udp
+  zk:
+    image: zookeeper:3.6
+    container_name: spike-dev-zk
+    hostname: zoo1
     restart: "no"
-    environment:
-      - CONSUL_BIND_INTERFACE=eth0
+    ports:
+      - 2181:2181
+    # environment:
+    #   ZOO_MY_ID: 1
+    #   ZOO_SERVERS: server.1=0.0.0.0:2888:3888
     networks:
       spike_default_network:
-        aliases:
-          - localconsul
   db:
     image: mysql:5.7
     container_name: spike-dev-db
@@ -35,13 +28,13 @@ services:
       MYSQL_DATABASE: spike_core_product
     networks:
       spike_default_network:
-  zk:
-    image: zookeeper:3.6
-    container_name: spike-dev-zk
-    hostname: zoo1
+  redis:
+    image: redis
+    container_name: spike-dev-redis
+    hostname: redis1
     restart: "no"
     ports:
-      - 2181:2181
+      - 16379:6379
     # environment:
     #   ZOO_MY_ID: 1
     #   ZOO_SERVERS: server.1=0.0.0.0:2888:3888
