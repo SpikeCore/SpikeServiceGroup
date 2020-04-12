@@ -1,6 +1,7 @@
 package cn.com.jonpad.spikecore.oauth.dto;
 
 import cn.com.jonpad.spikecore.core.dto.UserDto;
+import cn.com.jonpad.spikecore.core.dto.UserDtoSerializable;
 import cn.com.jonpad.spikecore.core.entities.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -13,5 +14,5 @@ import org.mapstruct.factory.Mappers;
 public interface UserDtoMapper {
   UserDtoMapper INSTANCE = Mappers.getMapper(UserDtoMapper.class);
 
-  UserDto toDto(UserEntity userEntity);
+  UserDtoSerializable toDto(UserEntity userEntity);
 }

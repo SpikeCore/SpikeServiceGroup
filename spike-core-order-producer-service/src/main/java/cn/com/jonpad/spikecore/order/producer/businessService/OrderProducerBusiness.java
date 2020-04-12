@@ -2,6 +2,7 @@ package cn.com.jonpad.spikecore.order.producer.businessService;
 
 import cn.com.jonpad.spikecore.core.dto.OrderDto;
 import cn.com.jonpad.spikecore.core.dto.UserDto;
+import cn.com.jonpad.spikecore.core.dto.UserDtoSerializable;
 import cn.com.jonpad.spikecore.oauth.businessService.UserBusiness;
 import com.alibaba.dubbo.config.annotation.Reference;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class OrderProducerBusiness {
 
   @Transactional
   public void createOrder(OrderDto dto) {
-    UserDto userDto = userBusiness.getByUuid(dto.getUserUuid());
+    UserDtoSerializable userDto = userBusiness.getByUuid(dto.getUserUuid());
 
     log.info("userDto:{}", userDto);
 

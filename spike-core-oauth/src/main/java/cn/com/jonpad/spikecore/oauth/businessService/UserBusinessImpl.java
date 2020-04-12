@@ -1,6 +1,7 @@
 package cn.com.jonpad.spikecore.oauth.businessService;
 
 import cn.com.jonpad.spikecore.core.dto.UserDto;
+import cn.com.jonpad.spikecore.core.dto.UserDtoSerializable;
 import cn.com.jonpad.spikecore.core.entities.UserEntity;
 import cn.com.jonpad.spikecore.oauth.dto.UserDtoMapper;
 import cn.com.jonpad.spikecore.oauth.exception.ResourceNotFoundException;
@@ -25,14 +26,14 @@ public class UserBusinessImpl implements UserBusiness {
 
   @Transactional(readOnly = true)
   @Override
-  public UserDto getByUuid(String uuid) {
+  public UserDtoSerializable getByUuid(String uuid) {
     UserEntity userEntity = service.getByUuid(uuid).orElseThrow(ResourceNotFoundException::new);
     return UserDtoMapper.INSTANCE.toDto(userEntity);
   }
 
   @Transactional()
   @Override
-  public UserDto getByPhone(String phone) {
+  public UserDtoSerializable getByPhone(String phone) {
     UserEntity userEntity = service.getByPhone(phone).orElse(new UserEntity(UUID.randomUUID().toString(), phone));
     service.save(userEntity);
     return UserDtoMapper.INSTANCE.toDto(userEntity);
