@@ -1,14 +1,11 @@
 package cn.com.jonpad.spikecore.order.producer.businessService;
 
 import cn.com.jonpad.spikecore.core.dto.OrderDto;
-import cn.com.jonpad.spikecore.core.dto.UserDto;
 import cn.com.jonpad.spikecore.core.dto.UserDtoSerializable;
 import cn.com.jonpad.spikecore.oauth.businessService.UserBusiness;
-import com.alibaba.dubbo.config.annotation.Reference;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +25,6 @@ public class OrderProducerBusiness {
   @Transactional
   public void createOrder(OrderDto dto) {
     UserDtoSerializable userDto = userBusiness.getByUuid(dto.getUserUuid());
-
     log.info("userDto:{}", userDto);
 
   }

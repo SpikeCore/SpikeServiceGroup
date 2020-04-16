@@ -6,8 +6,8 @@ import cn.com.jonpad.spikecore.core.entities.UserEntity;
 import cn.com.jonpad.spikecore.oauth.dto.UserDtoMapper;
 import cn.com.jonpad.spikecore.oauth.exception.ResourceNotFoundException;
 import cn.com.jonpad.spikecore.oauth.service.UserService;
-import com.alibaba.dubbo.config.annotation.Service;
 import lombok.AllArgsConstructor;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

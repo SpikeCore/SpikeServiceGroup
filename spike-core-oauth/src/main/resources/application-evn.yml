@@ -25,3 +25,5 @@ dubbo:
   registry:
     # 监控中心地址
     address: jomdembp:2181
+  metadata-report:
+    address: zookeeper://127.0.0.1:2181

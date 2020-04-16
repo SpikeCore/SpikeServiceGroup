@@ -29,12 +29,22 @@
     <java.version>1.8</java.version>
     <mapstruct.version>1.3.0.Final</mapstruct.version>
     <swagger.version>2.9.2</swagger.version>
-    <dubbo.version>2.6.5</dubbo.version>
+    <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+    <dubbo.version>2.7.6</dubbo.version>
     <curator_version>2.12.0</curator_version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+
+      <!-- Spring Boot  使用Dubbo一定要在声明一次-->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
 
       <dependency>
         <groupId>cn.com.jonpad</groupId>
@@ -86,24 +96,54 @@
         <version>${swagger.version}</version>
       </dependency>
 
-      <!-- Apache Dubbo  -->
-      <!-- Dubbo Spring Boot Starter -->
+      <!-- Apache Dubbo   -->
+
       <dependency>
-        <groupId>com.alibaba.boot</groupId>
+        <groupId>org.apache.dubbo</groupId>
         <artifactId>dubbo-spring-boot-starter</artifactId>
-        <version>0.2.1.RELEASE</version>
-      </dependency>
-      <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>dubbo</artifactId>
         <version>${dubbo.version}</version>
       </dependency>
 
-      <!-- Dubbo dependencies -->
       <dependency>
-        <groupId>org.apache.curator</groupId>
-        <artifactId>curator-framework</artifactId>
-        <version>${curator_version}</version>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-bom</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <!-- Zookeeper dependencies -->
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-zookeeper</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
     </dependencies>
